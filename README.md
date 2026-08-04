@@ -15,12 +15,12 @@ Drug shortages are a chronic, ongoing issue in Canada, around 2,000-3,000 new sh
 
 ## Approach
 
-1. **Data collection** – Pulled both datasets from Health Canada's public APIs (see `pull_shortage_data.py` and `pull_drug_product_data.py`) and handled authentication, pagination, and rate limits.
-2. **Cleaning & joining** – Cleaned the data, fixed formatting issues (including a float vs. integer DIN mismatch that caused the first merge to fail), and combined both datasets into a single table using the Drug Identification Number (DIN).
-3. **Exploratory analysis** – Explored the data to identify patterns that could help predict shortages, including previous shortages, therapeutic class, manufacturer count, and seasonal trends.
-4. **Feature engineering** – Created features for each drug, including previous shortage count, previous Tier 3 (severe) shortages, manufacturer count, days since the last shortage, resolution rate, and therapeutic class.
-5. **Modeling** – Trained a logistic regression model using data before January 1, 2024, and predicted whether a drug would have a new shortage in 2024–2025. A time-based split was used to avoid using future information during training.
-6. **Deployment** – Used the trained model to generate risk scores for 9,060 drugs and displayed the results in an interactive Streamlit dashboard.
+1. **Data collection** - Pulled both datasets from Health Canada's public APIs (see `pull_shortage_data.py` and `pull_drug_product_data.py`) and handled authentication, pagination, and rate limits.
+2. **Cleaning & joining** - Cleaned the data, fixed formatting issues (including a float vs. integer DIN mismatch that caused the first merge to fail), and combined both datasets into a single table using the Drug Identification Number (DIN).
+3. **Exploratory analysis** - Explored the data to identify patterns that could help predict shortages, including previous shortages, therapeutic class, manufacturer count, and seasonal trends.
+4. **Feature engineering** - Created features for each drug, including previous shortage count, previous Tier 3 (severe) shortages, manufacturer count, days since the last shortage, resolution rate, and therapeutic class.
+5. **Modeling** - Trained a logistic regression model using data before January 1, 2024, and predicted whether a drug would have a new shortage in 2024–2025. A time-based split was used to avoid using future information during training.
+6. **Deployment** - Used the trained model to generate risk scores for 9,060 drugs and displayed the results in an interactive Streamlit dashboard.
 ## Key Findings
 
 - **Manufacturer count is a weak predictor.** The intuitive assumption that drugs made by only one company shortage often did not hold up. Most shortages involve drugs with 5+ manufacturers already.
